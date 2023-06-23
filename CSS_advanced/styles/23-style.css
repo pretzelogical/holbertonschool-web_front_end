@@ -197,3 +197,21 @@ row::after {
     float: left;
     padding: 0.5rem;
 }
+
+[data-section-theme="dark"] {
+    background-color: var(--color-black);
+    --text-color: var(--color-white);
+    --section-title-color : var(--color-white)
+}
+
+.footer-address {
+    color: var(--text-color)
+}
+
+.social-link {
+    display: block;
+}
+
+.social-link > svg {
+    fill: var(--text-color);
+}

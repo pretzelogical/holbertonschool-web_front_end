@@ -177,11 +177,11 @@ ul.row {
     margin-right: auto;
 }
 
-footer {
+.footer {
     padding : var(--footer-padding);
 }
 
-footer ul {
+.footer ul {
     text-align: right;
 }
 
@@ -191,7 +191,7 @@ footer ul {
     color: var(--text-color);
 }
 
-row::after {
+.row::after {
     content: "";
     display: table;
     clear: both;
