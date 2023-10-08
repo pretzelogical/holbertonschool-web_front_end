@@ -1,0 +1,6 @@
+/* assigns #3D3D3D to body & p using the $ syntax */
+$textColor: #3D3D3D;
+
+body, p {
+  color: $textColor;
+}

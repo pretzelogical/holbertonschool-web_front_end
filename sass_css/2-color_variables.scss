@@ -1,0 +1,11 @@
+/*  Creates two variable and assigns them to body, p & h2 */
+$textColor: #3D3D3D;
+$backgroundColor: #6D6D6D;
+
+body, p {
+  color: $textColor;
+}
+
+body, h2 {
+  background-color: $backgroundColor;
+}
