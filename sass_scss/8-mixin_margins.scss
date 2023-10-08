@@ -1,0 +1,13 @@
+/* Using mixins to assigns margins to body and div */
+@mixin marginMix($size) {
+  margin-left: $size;
+  margin-right: $size;
+}
+
+body {
+  @include marginMix(10px);
+}
+
+div {
+  @include marginMix(15px);
+}
