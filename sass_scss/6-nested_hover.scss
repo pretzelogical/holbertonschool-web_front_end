@@ -1,0 +1,9 @@
+/* Assigns a color to button tags and another to the buttons
+   pseudo class :hover
+*/
+button {
+  color: #FF0000;
+  :hover {
+    color: #00FF00;
+  }
+}

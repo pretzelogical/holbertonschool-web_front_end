@@ -2,10 +2,15 @@
 $textColor: #3D3D3D;
 $backgroundColor: #6D6D6D;
 
-body, p {
+body {
+  color: $textColor;
+  background-color: $backgroundColor;
+}
+
+p {
   color: $textColor;
 }
 
-body, h2 {
+h2 {
   background-color: $backgroundColor;
 }

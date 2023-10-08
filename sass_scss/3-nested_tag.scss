@@ -1,0 +1,8 @@
+/* Uses nested declarations to assign styles to both the body and p elems inside the body */
+body {
+  margin: 0px;
+  padding: 0px;
+  p {
+    margin: 10px;
+  }
+}

@@ -1,0 +1,9 @@
+/* Uses nested declarations to assign two text color to body 
+   and elems of class .red inside body
+*/
+body {
+  color: #3D3D3D;
+  .red {
+    color: #FF0000;
+  }
+}

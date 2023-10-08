@@ -1,0 +1,7 @@
+/* Same as previous but only if the .red elem is the first child of body */
+body {
+  color: #3D3D3D;
+  > .red {
+    color: #FF0000;
+  }
+}
