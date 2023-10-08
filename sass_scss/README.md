@@ -25,3 +25,37 @@ Syntax:
       font-size: 9px;
     }
   
+  Mixins:
+    @mixin marginLR($size) {
+      margin-left: $size;
+      margin-right: $size;
+    }
+
+    body {
+      @include marginLR(12px)
+    }
+    ⇓⇓⇓
+    body {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+
+    Extend:
+      .flexCol {
+        display: flex;
+        flex-flow: column;
+      }
+
+      .note {
+        @extend .flexCol;
+      }
+      ⇓⇓⇓
+      .flexCol {
+        display: flex;
+        flex-flow: column;
+      }
+
+      .note {
+        display: flex;
+        flex-flow: column;
+      }

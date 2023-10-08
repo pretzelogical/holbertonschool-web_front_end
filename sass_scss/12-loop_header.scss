@@ -1,0 +1,7 @@
+/* creates h* tags using a for loop in the range of 1 to 5 */
+
+@for $headerNum from 1 through 5 {
+  h#{$headerNum} {
+    font-size: #{$headerNum}px;
+  }
+}

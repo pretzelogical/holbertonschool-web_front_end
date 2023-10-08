@@ -1,0 +1,10 @@
+/* Importing a list of names from 11-photos and looping over them to create
+   new classes
+*/
+@import '11-photos';
+
+@each $name in $list-names {
+  .photo-#{$name} {
+    background: image-url("photos/#{$name}.jpg" no-repeat);
+  }
+}
