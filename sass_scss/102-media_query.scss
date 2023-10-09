@@ -1,0 +1,19 @@
+/* Uses media query and math to add font size and text color */
+$h1Media: 18px, 16px, 14px;
+
+h1 {
+  font-size: 20px;
+}
+
+@each $size in $h1Media {
+  @media screen and (max-width: (160 * $size - 1920)) {
+    h1 {
+      font-size: $size;
+    }
+    @if (160 * $size - 1920) == 320px {
+      h1.small {
+        color: #1D1D1D;
+      }
+    }
+  }
+}
