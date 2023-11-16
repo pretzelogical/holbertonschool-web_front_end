@@ -1,7 +1,8 @@
 function createElement(data) {
     const para = document.createElement("p");
+    // console.log(data)
     para.textContent = data;
-    document.body.appendChild(para);
+    document.body.append(para);
 }
 
 function queryWikipedia(callback) {
@@ -13,8 +14,8 @@ function queryWikipedia(callback) {
             if (xhr.status == 200) {
                 var response = xhr.responseText;
                 // Process the response here
-                console.log(response);
-                createElement(response['extract']);
+                console.log(JSON.parse(response).query.pages['21721040'].extract);
+                createElement(JSON.parse(response).query.pages['21721040'].extract);
             } else {
                 console.error('Error: ' + xhr.status);
             }
