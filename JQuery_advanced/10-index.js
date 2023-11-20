@@ -10,7 +10,6 @@ $(function () {
   function listPosts() {
     $.get('http://localhost:3000/posts')
     .done(function (data) {
-      console.log(data);
       data.forEach(addPostRow);
     })
     .catch(function (error) {
