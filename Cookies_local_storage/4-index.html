@@ -3,33 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 3</title>
+    <title>Task 4</title>
     <style>
         .hidden {
             display: none;
         }
     </style>
-    <script defer>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <script>
         function setCookies(e) {
-            const firstName = document.getElementById('Firstname').value
-            const Email = document.getElementById('Email').value
-            let currentDate = new Date();
+            const firstName = document.getElementById('Firstname').value;
+            const Email = document.getElementById('Email').value;
 
-            currentDate.setTime(currentDate.getTime() + (10 * 24 * 60 * 60 * 1000));
-            document.cookie = `firstname=${firstName}; expires=${currentDate.toUTCString()}`;
-            document.cookie = `email=${Email}; expires=${currentDate.toUTCString()}`;
-        }
-        function getCookie (name) {
-            const cookie = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
-            if (cookie) {
-                return cookie[1];
-            } else {
-                return '';
-            }
+            Cookies.set('firstname', firstName, {'expires': 10});
+            Cookies.set('email', Email, {'expires': 10});
+            console.log(Cookies.get());
+            showWelcomeMessageOrForm();
         }
         function showCookies(e) {
             const para = document.createElement('p');
-            para.innerText = `Email: ${getCookie('email')} - Firstname: ${getCookie('firstname')}`;
+            const cookies = Cookies.get();
+            para.innerText = `Email: ${cookies.email} - Firstname: ${cookies.email}`;
             document.querySelector('body').append(para);
         }
         function showForm(e) {
@@ -41,18 +35,19 @@
             document.querySelector('div.loggedIn').classList.remove('hidden');
         }
         function deleteCookiesAndShowForm() {
-            document.cookie = 'firstname=; Thu, 01 Jan 1970 00:00:00 UTC';
-            document.cookie = 'email=; Thu, 01 Jan 1970 00:00:00 UTC';
+            Cookies.remove('firstname');
+            Cookies.remove('email');
             showForm();
         }
         function showWelcomeMessageOrForm() {
-            if (!getCookie('firstname')) {
+            const cookies = Cookies.get();
+            if (!Object.keys(cookies).includes('firstname') || cookies.firstname === '') {
                 showForm();
             } else {
                 hideForm();
                 const h2 = document.querySelector('.loggedIn h2')
                 const a = document.createElement('a');
-                h2.innerText = `Welcome: ${getCookie('firstname')} `;
+                h2.innerText = `Welcome: ${cookies.firstname} `;
                 a.href = '#';
                 a.onclick = deleteCookiesAndShowForm;
                 a.innerText = '(logout)';
