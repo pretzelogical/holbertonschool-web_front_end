@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script defer>
+        function setCookies(e) {
+            const firstName = document.getElementById('Firstname').value
+            const Email = document.getElementById('Email').value
+            let currentDate = new Date();
+
+            currentDate.setTime(currentDate.getTime() + (10 * 24 * 60 * 60 * 1000));
+            document.cookie = `firstname=${firstName}; expires=${currentDate.toUTCString()}`;
+            document.cookie = `email=${Email}; expires=${currentDate.toUTCString()}`;
+        }
+        function getCookie (name) {
+            const cookie = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
+            if (cookie) {
+                return cookie[1];
+            } else {
+                return '';
+            }
+        }
+        function showCookies(e) {
+            const para = document.createElement('p');
+            para.innerText = `Email: ${getCookie('email')} - Firstname: ${getCookie('firstname')}`;
+            document.querySelector('body').append(para);
+        }
+        function showForm(e) {
+            document.querySelector('div.login').classList.remove('hidden');
+            document.querySelector('div.loggedIn').classList.add('hidden');
+        }
+        function hideForm() {
+            document.querySelector('div.login').classList.add('hidden');
+            document.querySelector('div.loggedIn').classList.remove('hidden');
+        }
+        function deleteCookiesAndShowForm() {
+            document.cookie = 'firstname=; Thu, 01 Jan 1970 00:00:00 UTC';
+            document.cookie = 'email=; Thu, 01 Jan 1970 00:00:00 UTC';
+            showForm();
+        }
+        function showWelcomeMessageOrForm() {
+            if (!getCookie('firstname')) {
+                showForm();
+            } else {
+                hideForm();
+                const h2 = document.querySelector('.loggedIn h2')
+                const a = document.createElement('a');
+                h2.innerText = `Welcome: ${getCookie('firstname')} `;
+                a.href = '#';
+                a.onclick = deleteCookiesAndShowForm;
+                a.innerText = '(logout)';
+                h2.append(a);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login">
+        <h2>Login to the website</h1>
+        <input type="text" name="Firstname" id="Firstname" placeholder="Firstname">
+        <input type="text" name="Email" id="Email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button>
+    </div>
+    <div class="loggedIn hidden">
+        <h2><a href="#" onclick="deleteCookiesAndShowForm()">(logout)</a></h2>
+    </div>
+</body>
+<script>showWelcomeMessageOrForm();</script>
+</html>
